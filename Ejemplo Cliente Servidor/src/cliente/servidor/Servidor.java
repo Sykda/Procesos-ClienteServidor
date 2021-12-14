@@ -20,6 +20,7 @@ public class Servidor {
 
 			// Wait, on welcoming socket for contact by client
 			Socket connectionSocket = welcomeSocket.accept();
+			System.out.println("SERVER Conectado al socket: " + connectionSocket.getLocalSocketAddress());
 
 			// Create input stream, attached to socket
 			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
@@ -30,16 +31,16 @@ public class Servidor {
 			// Read in line from socket
 			clientSentence = inFromClient.readLine();
 			capitalizedSentence = clientSentence.toUpperCase() + '\n';
-			
+
 			// Write out line to socket
 			outToClient.writeBytes(capitalizedSentence);
 
 			// End of while loop, bloop back and
 			// wait for another client connection
+
 			
-			System.out.println("SERVER Conectado al socket: "+welcomeSocket);
-			System.out.println("SERVER Cliente conectado desde: "+welcomeSocket);
-			System.out.println("SERVER Capitalized sentence: "+capitalizedSentence);
+			System.out.println("CLIENT Conectado desde: "+connectionSocket.getLocalAddress()+":"+connectionSocket.getPort());
+			System.out.println("SERVER Capitalized sentence: " + capitalizedSentence);
 
 		}
 	}

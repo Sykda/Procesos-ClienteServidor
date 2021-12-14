@@ -13,6 +13,7 @@ public class Cliente {
 		String modifiedSentence;
 
 		// Create an input stream
+		System.out.println("USUARIO: ");
 		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
 		// Create a client socket, connect to server
