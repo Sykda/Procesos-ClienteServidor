@@ -16,11 +16,13 @@ public class Servidor {
 
 		// Create welcoming socket at port 2009
 		ServerSocket welcomeSocket = new ServerSocket(2009);
+		System.out.println("SERVER Conectado al socket de servidor en el puerto: " + welcomeSocket.getLocalPort() + ". Esperando conexiones de clientes.\n");
+		
 		while (true) {
 
 			// Wait, on welcoming socket for contact by client
 			Socket connectionSocket = welcomeSocket.accept();
-			System.out.println("SERVER Conectado al socket: " + connectionSocket.getLocalSocketAddress());
+			
 
 			// Create input stream, attached to socket
 			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
@@ -39,7 +41,8 @@ public class Servidor {
 			// wait for another client connection
 
 			
-			System.out.println("CLIENT Conectado desde: "+connectionSocket.getLocalAddress()+":"+connectionSocket.getPort());
+			System.out.println("CLIENT Conectado desde: "+connectionSocket.getInetAddress().getHostAddress()+":"+connectionSocket.getPort());
+			System.out.println("SERVER Client sentence: "+clientSentence);
 			System.out.println("SERVER Capitalized sentence: " + capitalizedSentence);
 
 		}
